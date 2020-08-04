@@ -28,17 +28,17 @@
     <app-date-time-modal [task]="data"></app-date-time-modal>
 </div>
 <div mat-dialog-actions>
-  <div class="uk-modal-footer uk-text-right">
+  <div class="uk-modal-footer uk-text-right uk-width-expand">
     <button mat-button
           class="uk-icon-button uk-float-left"
           uk-icon="trash"
           type="button"
           (click)="removeDateTime()"
         ></button>
-          <button mat-button class="uk-button" type="button" (click)="close()">
+          <button mat-button class="uk-button uk-float-right" type="button" (click)="close()">
             Cancel
           </button>
-          <button mat-button class="uk-button done-btn" type="button" (click)="setDateTime()">
+          <button mat-button class="uk-button done-btn uk-float-right" type="button" (click)="setDateTime()">
             OK
           </button>
   </div>
