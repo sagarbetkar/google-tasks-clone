@@ -1,21 +1,45 @@
-<div [id]="elementId" uk-modal>
-    <div class="uk-modal-dialog">
-      <div class="uk-modal-body">
-        <app-date-time-modal [task]="data"></app-date-time-modal>
+<!-- <div [id]="elementId" uk-modal> -->
+
+<!-- <div mat-dialog-title></div>
+    <div  class="uk-modal-dialog">
+      <div mat-dialog-content >
+        <div class="uk-modal-body">
+          <app-date-time-modal [task]="data"></app-date-time-modal>
+        </div>
       </div>
       <div class="uk-modal-footer uk-text-right">
-        <button
+        <button mat-button
         class="uk-icon-button uk-float-left"
         uk-icon="trash"
         type="button"
         (click)="removeDateTime()"
       ></button>
-        <button class="uk-button" type="button" (click)="close()">
+        <button mat-button class="uk-button" type="button" (click)="close()">
           Cancel
         </button>
-        <button class="uk-button done-btn" type="button" (click)="setDateTime()">
+        <button mat-button class="uk-button done-btn" type="button" (click)="setDateTime()">
           OK
         </button>
       </div>
-    </div>
+    </div> -->
+<!--   </div> -->
+
+<div mat-dialog-content>
+    <app-date-time-modal [task]="data"></app-date-time-modal>
+</div>
+<div mat-dialog-actions>
+  <div class="uk-modal-footer uk-text-right">
+    <button mat-button
+          class="uk-icon-button uk-float-left"
+          uk-icon="trash"
+          type="button"
+          (click)="removeDateTime()"
+        ></button>
+          <button mat-button class="uk-button" type="button" (click)="close()">
+            Cancel
+          </button>
+          <button mat-button class="uk-button done-btn" type="button" (click)="setDateTime()">
+            OK
+          </button>
   </div>
+</div>

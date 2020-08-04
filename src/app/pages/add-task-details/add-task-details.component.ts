@@ -12,6 +12,8 @@ import { Subject } from 'rxjs';
 import { UikitModal } from 'src/app/classes/uikit-modal';
 import { TasksService } from 'src/app/services/task/tasks.service';
 import { ITask } from 'src/app/interfaces/task';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DateModalComponent } from 'src/app/components/date-modal/date-modal.component';
 
 @Component({
   selector: 'app-add-task-details',
@@ -30,6 +32,7 @@ export class AddTaskDetailsComponent implements OnInit, OnDestroy {
     private tasksService: TasksService,
     private listsService: ListsService,
     private router: Router,
+    public dailog: MatDialog,
     location: Location
   ) {
     this.location = location;
@@ -96,17 +99,30 @@ export class AddTaskDetailsComponent implements OnInit, OnDestroy {
   }
 
   openCalendarModal() {
-    UikitModal.show('#dateTimeModal');
+    /* UikitModal.show('#dateTimeModal'); */
+    const dialogRef = this.dailog.open(DateModalComponent, {
+      width: '268px',
+      data: this.task
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.addTaskDetailsForm.patchValue({
+          due_date: result.due_date,
+          due_time: result.due_time,
+        });
+      }
+    });
   }
 
-  addResData(event) {
+  /* addResData(event) {
     if (event) {
       this.addTaskDetailsForm.patchValue({
         due_date: event.due_date,
         due_time: event.due_time,
       });
     }
-  }
+  } */
 
   /* setDateTime() {
     const res = this.dateTimeForm.onSubmit();

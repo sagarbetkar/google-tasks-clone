@@ -6,6 +6,8 @@ import { DateTimeModalComponent } from '../date-time-modal/date-time-modal.compo
 import { UikitModal } from 'src/app/classes/uikit-modal';
 import { ITask } from 'src/app/interfaces/task';
 import { TasksService } from 'src/app/services/task/tasks.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DateModalComponent } from '../date-modal/date-modal.component';
 
 @Component({
   selector: 'app-task-form',
@@ -21,7 +23,7 @@ export class TaskFormComponent implements OnInit, OnChanges, OnDestroy {
   tasks: ITask[];
   @Input() isChild: boolean = false;
   @Input() inEdit: boolean;
-  constructor(private fb: FormBuilder, private tasksService: TasksService) {}
+  constructor(private fb: FormBuilder, private tasksService: TasksService, public dailog: MatDialog) {}
 
   ngOnInit(): void {
     if(this.isChild) {
@@ -72,7 +74,19 @@ export class TaskFormComponent implements OnInit, OnChanges, OnDestroy {
 
   openModal() {
     console.log(this.task);
-    UikitModal.show(`#${this.task.id}`);
+    const dialogRef = this.dailog.open(DateModalComponent, {
+      width: '268px',
+      data: this.task
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.tasksService.update(this.task.id, {
+          due_date: result.due_date,
+          due_time: result.due_time,
+        });
+      }
+    });
   }
 
   addResData(event) {
@@ -83,7 +97,7 @@ export class TaskFormComponent implements OnInit, OnChanges, OnDestroy {
 
   /* setDateTime() {
     const res = this.dateTimeForm.onSubmit();
-    this.tasksService.update(this.task.id, res);  
+    this.tasksService.update(this.task.id, res);
     UIkit.modal('#my-dateTime').hide()
   }
 

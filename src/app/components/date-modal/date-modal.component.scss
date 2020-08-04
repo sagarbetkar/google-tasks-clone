@@ -1,18 +1,7 @@
 
-    .uk-modal-dialog {
-        width: 344px;
-        border-radius: 4px;  
-        .uk-modal-body {
-          padding: 16px 16px 0px 16px;
-          .bs-datepicker {
-            .bs-datepicker-container {
-              padding: 0px;
-            }
-          }
-        }
         .uk-modal-footer {
           border: 0;
-          padding: 0 16px 16px 16px;
+          padding: 0;
           border-bottom-left-radius: 8px;
           border-bottom-right-radius: 8px;
           .uk-icon-button{
@@ -32,4 +21,3 @@
             color: #1a73e8;
           }
         }
-      }

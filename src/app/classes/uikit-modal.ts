@@ -7,7 +7,7 @@ export class UikitModal<T = any, O = any, E = any> {
     success: EventEmitter<O> = new EventEmitter<O>();
     error: EventEmitter<E> = new EventEmitter<E>();
   
-    protected _elementId: string;
+    protected _elementId: any;
   
     eventHandles: UIkitModalEvent = {
       beforeshow: () => {},

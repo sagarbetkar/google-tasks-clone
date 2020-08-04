@@ -6,7 +6,7 @@ import { DatePipe } from '@angular/common';
   pure: true,
 })
 export class DateAgoPipe implements PipeTransform {
-  transform(value: string) {
+  transform(value: any) {
     const _value = Number(value);
 
     const dif = Math.floor((Date.now() - _value) / 1000 / 86400);

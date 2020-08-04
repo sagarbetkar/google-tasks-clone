@@ -1,7 +1,11 @@
 <form [formGroup]="dateTimeForm">
-    <div>
-      <mat-calendar [selected]="selectedDate" (selectedChange)="onValueChange($event)"> </mat-calendar>
-      <!-- <bs-datepicker-inline
+  <div>
+    <mat-calendar
+      [selected]="selectedDate"
+      (selectedChange)="onValueChange($event)"
+    >
+    </mat-calendar>
+    <!-- <bs-datepicker-inline
         [bsConfig]="{
           rangeInputFormat: 'MMMM Do YYYY',
           dateInputFormat: 'MMMM Do YYYY',
@@ -9,17 +13,16 @@
         }"
         (bsValueChange)="onValueChange($event)"
       ></bs-datepicker-inline> -->
+  </div>
+  <div class="time-field" uk-grid>
+    <div class="uk-width-auto">
+      <span uk-icon="clock"></span>
     </div>
-    <div class="time-field" uk-grid>
-      <div class="uk-width-auto">
-        <span uk-icon="clock"></span>
-      </div>
-      <div class="uk-width-expand">
-        <select class="uk-select" formControlName="time">
-          <option value="">Set time</option>
-          <option *ngFor="let hour of hours" [value]="hour">{{ hour }}</option>
-        </select>
-      </div>
+    <div class="uk-width-expand">
+      <select class="uk-select" formControlName="time">
+        <option value="">Set time</option>
+        <option *ngFor="let hour of hours" [value]="hour">{{ hour }}</option>
+      </select>
     </div>
-  </form>
-  
+  </div>
+</form>
