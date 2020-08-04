@@ -50,7 +50,6 @@ export class LayoutComponent implements OnInit, OnDestroy {
     this.listsService.list().subscribe((lists) => {
       this.lists = lists;
     });
-    // this.list = this.lists[0];
   }
 
   async onAddList() {

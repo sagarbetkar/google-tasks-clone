@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { IList } from 'src/app/interfaces/list';
 import { Subject } from 'rxjs';
 import { DateTimeModalComponent } from '../date-time-modal/date-time-modal.component';
-import { UikitModal } from 'src/app/classes/uikit-modal';
 import { ITask } from 'src/app/interfaces/task';
 import { TasksService } from 'src/app/services/task/tasks.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -93,17 +92,6 @@ export class TaskFormComponent implements OnInit, OnChanges, OnDestroy {
       this.tasksService.update(this.task.id, event);
     }
   }
-
-  /* setDateTime() {
-    const res = this.dateTimeForm.onSubmit();
-    this.tasksService.update(this.task.id, res);
-    UIkit.modal('#my-dateTime').hide()
-  }
-
-  removeDateTime() {
-    this.tasksService.clearDateTime(this.task.id);
-    UIkit.modal('#my-dateTime').hide()
-  } */
 
   ngOnDestroy() {
     this.unsubscribe.next(true);

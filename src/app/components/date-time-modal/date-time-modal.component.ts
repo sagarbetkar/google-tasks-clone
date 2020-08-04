@@ -22,9 +22,9 @@ export class DateTimeModalComponent implements OnInit, OnChanges, OnDestroy {
   @Input() task: ITask;
   selectedDate;
   hours = [];
-  
+
   constructor(private fb: FormBuilder) {}
-  
+
   ngOnInit(): void {
     this.updateForm();
     for (let hour = 0; hour < 24; hour++) {

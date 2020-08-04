@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, OnDestroy, Output, EventEmitter, ViewChild, OnChanges, SimpleChanges, Inject } from '@angular/core';
-import { UikitModal } from 'src/app/classes/uikit-modal';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, Inject } from '@angular/core';
 import { DateTimeModalComponent } from '../date-time-modal/date-time-modal.component';
 import { TasksService } from 'src/app/services/task/tasks.service';
 import { ITask } from 'src/app/interfaces/task';
@@ -11,30 +10,16 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './date-modal.component.html',
   styleUrls: ['./date-modal.component.scss']
 })
-export class DateModalComponent implements OnInit, OnChanges, OnDestroy {
+export class DateModalComponent implements OnInit {
   @ViewChild(DateTimeModalComponent) dateTimeForm: DateTimeModalComponent;
   @Input() eId: string;
   @Output() successEvent: EventEmitter<any> = new EventEmitter<any>();
-  /* @Output() hide: EventEmitter<void> = new EventEmitter<void>();
-  @Output() error: EventEmitter<any> = new EventEmitter<any>(); */
 
-  constructor(private tasksService: TasksService, public dailogRef: MatDialogRef<DateModalComponent>, @Inject(MAT_DIALOG_DATA) public data: ITask) {
-    // super();
-  }
 
-  ngOnInit(): void {
-    // this._elementId = this.eId;
-    // super.OnInit();
-  }
-  
-  ngOnChanges(changes: SimpleChanges) {
-    // this.data = changes['data'].currentValue;
-    // this._elementId = changes.eId.currentValue;
-  }
+  constructor(private tasksService: TasksService, public dailogRef: MatDialogRef<DateModalComponent>, @Inject(MAT_DIALOG_DATA) public data: ITask) {}
 
-  ngOnDestroy() {
-    // super.OnDestroy();
-  }
+  ngOnInit(): void {}
+
 
   removeDateTime() {
     this.tasksService.clearDateTime(this.data.id);

@@ -9,10 +9,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IList } from 'src/app/interfaces/list';
 import { ListsService } from 'src/app/services/list/lists.service';
 import { Subject } from 'rxjs';
-import { UikitModal } from 'src/app/classes/uikit-modal';
 import { TasksService } from 'src/app/services/task/tasks.service';
 import { ITask } from 'src/app/interfaces/task';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { DateModalComponent } from 'src/app/components/date-modal/date-modal.component';
 
 @Component({
@@ -40,7 +39,6 @@ export class AddTaskDetailsComponent implements OnInit, OnDestroy {
 
   private unsubscribe: Subject<boolean> = new Subject<boolean>();
   addTaskDetailsForm: FormGroup;
- /*  @ViewChild(DateTimeModalComponent) dateTimeForm: DateTimeModalComponent; */
   listId: number;
   taskId: number;
   task: ITask;
@@ -99,7 +97,6 @@ export class AddTaskDetailsComponent implements OnInit, OnDestroy {
   }
 
   openCalendarModal() {
-    /* UikitModal.show('#dateTimeModal'); */
     const dialogRef = this.dailog.open(DateModalComponent, {
       width: '268px',
       data: this.task
@@ -114,31 +111,6 @@ export class AddTaskDetailsComponent implements OnInit, OnDestroy {
       }
     });
   }
-
-  /* addResData(event) {
-    if (event) {
-      this.addTaskDetailsForm.patchValue({
-        due_date: event.due_date,
-        due_time: event.due_time,
-      });
-    }
-  } */
-
-  /* setDateTime() {
-    const res = this.dateTimeForm.onSubmit();
-    if (res) {
-      this.addTaskDetailsForm.patchValue({
-        due_date: res.due_date,
-        due_time: res.due_time,
-      });
-    }
-    UIkit.modal('#my-id').$destory(true);
-  }
-
-  removeDateTime() {
-    this.tasksService.clearDateTime(this.task.id);
-    UIkit.modal('#my-id').$destory(true);
-  } */
 
   clearInput() {
     this.addTaskDetailsForm.patchValue({

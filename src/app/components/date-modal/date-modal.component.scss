@@ -1,23 +1,22 @@
-
-        .uk-modal-footer {
-          border: 0;
-          padding: 0;
-          border-bottom-left-radius: 8px;
-          border-bottom-right-radius: 8px;
-          .uk-icon-button{
-            margin: 10px 8px;
-          }
-          .uk-button {
-            border: 0;
-            padding: 0 15px 0px 0px;
-            text-transform: unset;
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 0.25px;
-            margin: 8px;
-            background-color: transparent;
-          }
-          .done-btn {
-            color: #1a73e8;
-          }
-        }
+.uk-modal-footer {
+  border: 0;
+  padding: 0;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  .uk-icon-button{
+    margin: 10px 8px;
+  }
+  .uk-button {
+    border: 0;
+    padding: 0 15px 0px 0px;
+    text-transform: unset;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.25px;
+    margin: 8px;
+    background-color: transparent;
+  }
+  .done-btn {
+    color: #1a73e8;
+  }
+}
