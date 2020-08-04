@@ -1,0 +1,106 @@
+<div>
+    <div class="add-menu-nav">
+      <button class="uk-button add-task-btn" (click)="addTaskInput()">
+        <span class="plus-icon" uk-icon="icon: plus; ratio: 0.8"></span> Add a
+        task
+      </button>
+      <button
+        class="uk-icon-button uk-float-right more-btn"
+        uk-icon="more-vertical"
+        type="button"
+      ></button>
+      <div uk-dropdown="mode: click;pos: bottom-right">
+        <ul class="uk-nav uk-dropdown-nav dd-nav">
+          <li class="uk-nav-header dd-nav-header"><span>Sort By</span></li>
+          <li><button class="uk-button uk-button-link" (click)="getTasks()" [ngClass]="{'active-link': !isActive }">My Order</button></li>
+          <li><button class="uk-button uk-button-link" [ngClass]="{'active-link': isActive }" (click)="sortByDueDate()">Date</button></li>
+          <li class="uk-nav-divider"></li>
+          <li><a  href="#rename-modal-sections" uk-toggle>Rename list</a></li>
+          <li>
+            <button
+              class="uk-button uk-button-link"
+              (click)="deleteList(list.id)"
+            >
+              Delete list
+            </button>
+          </li>
+          <li>
+            <button
+              class="uk-button uk-button-link"
+              (click)="deleteAllCompletedTask(tasksCompleted)"
+            >
+              Delete all completed tasks
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <ul class="uk-list" uk-sortable="cls-custom: uk-box-shadow-small uk-flex uk-flex-middle uk-background">
+        <li *ngFor="let task of tasks">
+          <app-task-form [list]="list" [task]="task" [isChild]="task.parent_id"></app-task-form>
+        </li>
+      </ul>
+    </div>
+    <div id="content-wrap">
+      <!-- all other page content -->
+    </div>
+    <div *ngIf="tasksCompleted.length > 0" class="footer">
+      <ul class="uk-margin-remove" uk-accordion>
+        <li>
+          <div class="uk-accordion-title">
+            Completed ({{ tasksCompleted.length }})
+          </div>
+          <div class="uk-accordion-content">
+            <div class="uk-list task-lists" *ngFor="let task of tasksCompleted">
+              <div class="task-li uk-margin-remove uk-visible-toggle" uk-grid>
+                <div class="uk-width-auto uk-padding-remove">
+                  <div class="auto-box">
+                    <input
+                      class="uk-checkbox uk-border-circle"
+                      type="checkbox"
+                      (click)="redoTask(task.id)"
+                      [checked]="task.is_completed"
+                    />
+                  </div>
+                </div>
+                <div class="uk-width-expand uk-padding-remove edit-icon-link">
+                  <div class="cut-line">{{ task.task_title }}</div>
+                </div>
+                <div class="uk-width-auto uk-padding-remove edit-icon-link">
+                  <button
+                    class="uk-hidden-hover uk-button"
+                    uk-icon="icon: trash; ratio: 0.8"
+                    (click)="deleteCompletedTask(task.id)"
+                  ></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  
+  
+  <!--Start of Create new list Modal -->
+  <div id="rename-modal-sections" class="uk-flex-top" uk-modal>
+    <div class="uk-modal-dialog uk-margin-auto-vertical">
+      <div class="uk-modal-header">
+        <h2 class="uk-modal-title">Rename new list</h2>
+      </div>
+      <div class="uk-modal-body">
+        <app-list-modal [list]="list"></app-list-modal>
+      </div>
+      <div class="uk-modal-footer uk-text-right">
+        <button class="uk-button uk-modal-close" type="button">
+          Cancel
+        </button>
+        <button class="uk-button done-btn" type="button" (click)="renameList()">
+          Done
+        </button>
+      </div>
+    </div>
+  </div>
+  <!--End of Create new list Modal -->

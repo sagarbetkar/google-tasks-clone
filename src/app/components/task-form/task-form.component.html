@@ -1,0 +1,69 @@
+<form [formGroup]="addTasksForm">
+    <div class="uk-list task-lists">
+      <div class="task-li uk-margin-remove uk-visible-toggle" uk-grid>
+        <div class="uk-width-auto uk-padding-remove" [ngClass]="{'subtask' : isChild}">
+          <div class="auto-box">
+            <input
+              class="uk-checkbox uk-border-circle"
+              type="checkbox"
+              formControlName="isCompleted"
+            />
+          </div>
+        </div>
+        <div class="uk-width-expand uk-padding-remove edit-icon-link">
+          <input class="uk-input task-input-field" appAutoFocus formControlName="task_title"/>
+          <div class="task-description">{{ task.task_description }}</div>
+          <div class="uk-width-auto uk-margin-remove uk-padding-remove">
+            <button
+              *ngIf="task.due_date"
+              (click)="openModal()"
+              class="uk-button uk-button-primary date-btn"
+            >
+              <span uk-icon="icon: calendar; ratio:0.8"></span>{{ task.due_date | dateAgo }} {{task.due_time}}
+            </button>
+          </div>
+        </div>
+        <div class="uk-width-auto uk-padding-remove edit-icon-link" *ngIf="!inEdit">
+          <a
+            [routerLink]="['edit/' + task.id]"
+            uk-icon="icon: pencil"
+          ></a>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div *ngIf="task.parent_id === null">
+    <ul class="uk-list">
+      <li *ngFor="let task of tasks">
+        <app-task-form
+          [list]="list"
+          [task]="task"
+          [isChild]="true"
+        ></app-task-form>
+      </li>
+    </ul>
+  </div>
+  
+  <app-date-modal [eId]="task.id" [data]="task" (success)="addResData($event)"></app-date-modal>
+  <!-- <div id="my-dateTime" uk-modal>
+    <div class="uk-modal-dialog">
+      <div class="uk-modal-body">
+        <app-date-time-modal [task]="task"></app-date-time-modal>
+      </div>
+      <div class="uk-modal-footer uk-text-right">
+        <button
+        class="uk-icon-button uk-float-left uk-margin-small-top"
+        uk-icon="trash"
+        type="button"
+        (click)="removeDateTime()"
+      ></button>
+        <button class="uk-button uk-modal-close" type="button">
+          Cancel
+        </button>
+        <button class="uk-button done-btn" type="button" (click)="setDateTime()">
+          OK
+        </button>
+      </div>
+    </div>
+  </div> -->
+  

@@ -1,0 +1,114 @@
+<div class="uk-container-xsmall uk-align-center">
+    <div class="header-box">
+      <a
+        class="back-btn"
+        uk-icon="icon: arrow-left; ratio: 1"
+        (click)="goback()"
+      ></a>
+      <a
+        class="uk-float-right trash-btn"
+        uk-icon="icon: trash; ratio: 0.8"
+        (click)="deleteTask()"
+      ></a>
+    </div>
+    <form [formGroup]="addTaskDetailsForm">
+      <div class="uk-margin input-div">
+        <input
+          class="uk-input"
+          type="text"
+          placeholder="Enter Title"
+          formControlName="task_title"
+        />
+      </div>
+      <div class="uk-margin input-div">
+        <textarea
+          class="uk-textarea"
+          placeholder="Add details"
+          formControlName="task_description"
+        ></textarea>
+      </div>
+      <div class="uk-margin input-div" uk-grid>
+        <div class="uk-width-auto edit-page-icons" uk-icon="icon: list"></div>
+        <select
+          class="uk-width-expand uk-select uk-margin-remove"
+          formControlName="list"
+        >
+          <option *ngFor="let list of lists" [value]="list.id">{{
+            list.name
+          }}</option>
+        </select>
+      </div>
+      <div class="uk-margin input-div" uk-grid>
+        <div class="uk-width-auto edit-page-icons" uk-icon="icon: calendar"></div>
+        <div class="uk-width-expand uk-margin-remove uk-padding-remove">
+          <!-- <div class="uk-inline" *ngIf="addTaskDetailsForm.value['due_date']">
+            <a class="uk-form-icon uk-form-icon-flip" uk-icon="icon: close" (click)="clearInput()"></a>
+            <input
+            type="text"
+            class="uk-input"
+            uk-toggle="target: #my-id"
+            formControlName="due_date"
+            />
+          </div> -->
+          <div class="date-time-input uk-inline uk-width-expand" *ngIf="addTaskDetailsForm.value['due_date']">
+            <div role="button" tabindex="0" (click) = "openCalendarModal()">
+              <div class="qmdYc">{{task.due_date | date:  'EEE, MMM d'}}</div>
+              <div class="lB7oFf">{{task.due_time}}</div>
+            </div>
+            <a class="uk-form-icon uk-form-icon-flip" uk-icon="icon: close" (click)="clearInput()"></a>
+          </div>
+          <button
+            class="uk-button uk-button-default uk-border-rounded "
+           (click) = "openCalendarModal()"
+            type="button"
+            *ngIf="!addTaskDetailsForm.value['due_date']"
+          >
+            Add date/time
+          </button>
+        </div>
+      </div>
+    </form>
+    <div class="uk-margin input-div" uk-grid *ngIf="!task.parent_id">
+      <div
+        class="uk-width-auto edit-page-icons"
+        uk-icon="icon: arrow-right"
+      ></div>
+      <div class="uk-width-expand">
+        <ul class="uk-list uk-list-stripped">
+          <li *ngFor="let task of tasks" class="add-subtask-btn">
+            <app-task-form [list]="list" [task]="task" [inEdit]="true"></app-task-form>
+          </li>
+        </ul>
+        <button
+          class="uk-button uk-button-default uk-border-rounded add-subtask-btn"
+          (click)="addSubTaskInput()"
+        >
+          Add subtasks
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <app-date-modal eId="dateTimeModal" [data]="task" (success)="addResData($event)"></app-date-modal>
+  <!-- <div id="my-id" uk-modal>
+    <div class="uk-modal-dialog">
+      <div class="uk-modal-body">
+        <app-date-time-modal [task]="task"></app-date-time-modal>
+      </div>
+      <div class="uk-modal-footer uk-text-right">
+        <button
+        class="uk-icon-button uk-float-left"
+        uk-icon="trash"
+        type="button"
+        (click)="removeDateTime()"
+      ></button>
+        <button class="uk-button uk-modal-close" type="button">
+          Cancel
+        </button>
+        <button class="uk-button done-btn" type="button" (click)="setDateTime()">
+          OK
+        </button>
+      </div>
+    </div>
+  </div> -->
+  

@@ -1,0 +1,19 @@
+.time-field{
+    margin: 20px 16px 20px 16px;
+    .uk-width-auto{
+      padding-left:0;
+      span{
+        margin-top: 10px;
+      }
+    }
+    .uk-width-expand{
+      .uk-select {
+        border: 0;
+        border-bottom: 1px;
+        border-style: solid;
+        border-color: #f8f9fa;
+        background-color: #f8f9fa;
+        padding: 0;
+      }
+    }
+  }

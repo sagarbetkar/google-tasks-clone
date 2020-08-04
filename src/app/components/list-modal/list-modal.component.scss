@@ -1,0 +1,15 @@
+.input-div {
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #f8f9fa;
+    padding: 6px 8px;
+    .uk-input {
+      border: 0;
+      border-bottom: 1px;
+      border-style: solid;
+      border-color: #80868b;
+      &:focus {
+        border-bottom: 2px solid #1a73e8;
+      }
+    }
+  }

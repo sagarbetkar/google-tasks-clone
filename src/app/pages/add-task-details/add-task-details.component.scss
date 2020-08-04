@@ -1,0 +1,168 @@
+.uk-container-xsmall {
+    max-width: 300px;
+    height: 100%;
+    max-width: 300px;
+    position: relative;
+    min-height: 100vh;
+    border-left: 1px solid #f1f3f4;
+    border-right: 1px solid #f1f3f4;
+    padding: 0;
+  }
+  
+  .header-box {
+    height: 56px;
+    width: 100%;
+    border-bottom: 1px solid #f1f3f4;
+    margin-bottom: 10px;
+    .back-btn,
+    .trash-btn {
+      margin: 10px 20px;
+      padding: 10px 10px;
+      &:hover {
+        background-color: #f1f3f4;
+        border-radius: 50%;
+      }
+    }
+  }
+  
+  .input-div {
+    font-size: 14px;
+    padding: 0px 8px;
+    color: #202124;
+    .uk-input,
+    .uk-textarea {
+      border: 0;
+      border-bottom: 1px;
+      border-style: solid;
+      border-color: #f8f9fa;
+      background-color: #f8f9fa;
+      &:focus {
+        border-bottom: 2px solid #1a73e8;
+      }
+    }
+    .uk-select {
+      border: 0;
+      border-bottom: 1px;
+      border-style: solid;
+      border-color: #f8f9fa;
+      background-color: #f8f9fa;
+      padding: 0;
+    }
+    .edit-page-icons {
+      font-size: 20px;
+      color: #000;
+      opacity: 0.54;
+      margin: 10px;
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+      li {
+        input[type="checkbox"] {
+          margin: 12px;
+        }
+        &:last-of-type {
+          margin-bottom: 10px;
+        }
+        margin: 0 1px 0 -40px;
+      }
+    }
+    .add-subtask-btn {
+      margin-left: -35px;
+    }
+  }
+  
+  .subtask {
+    margin-left: -40px;
+  }
+  
+  .uk-button {
+    background-color: #ffffff;
+    color: #5f6368;
+    padding: 15px 4px;
+    text-transform: unset;
+    line-height: 0;
+    border-radius: 4px;
+    border: none;
+    margin: 5px;
+    &:hover,
+    &:active {
+      background-color: #d6d6d6;
+      color: #1a73e8;
+      border-radius: 4px;
+    }
+  }
+  
+  #my-id {
+    .uk-modal-dialog {
+      width: 344px;
+      border-radius: 4px;  
+      .uk-modal-body {
+        padding: 16px 16px 0px 16px;
+        .bs-datepicker {
+          .bs-datepicker-container {
+            padding: 0px;
+          }
+        }
+        /* .time-field{
+          margin: 20px 16px 20px 16px;
+          .uk-width-auto{
+            padding-left:0;
+            span{
+              margin-top: 10px;
+            }
+          }
+          .uk-width-expand{
+            .uk-select {
+              border: 0;
+              border-bottom: 1px;
+              border-style: solid;
+              border-color: #f8f9fa;
+              background-color: #f8f9fa;
+              padding: 0;
+            }
+          }
+        } */
+      }
+      .uk-modal-footer {
+        border: 0;
+        padding: 0 16px 16px 16px;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        .uk-icon-button{
+          margin: -6px 5px;
+        }
+        .uk-button {
+          border: 0;
+          padding: 0 15px 0px 0px;
+          text-transform: unset;
+          font-size: 14px;
+          font-weight: 500;
+          letter-spacing: 0.25px;
+          margin: 8px;
+          background-color: transparent;
+        }
+        .done-btn {
+          color: #1a73e8;
+        }
+      }
+    }
+  }
+  
+  .date-time-input{
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 4px;
+    border: 1px solid #e8eaed;
+    padding: 12px 44px 12px 12px;
+    cursor: pointer;
+    .qmdYc{
+      color: #1967d2;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .lB7oFf{
+      color: #3c4043;
+      font-size: 14px;
+    }
+  }

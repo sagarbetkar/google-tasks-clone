@@ -1,0 +1,55 @@
+<div class="uk-container uk-container-xsmall">
+    <!--Start of Header -->
+    <div class="uk-flex tasks-header">
+      <div class="uk-flex uk-flex-column uk-margin-small-top">
+        <h2 class="small-heading">Tasks</h2>
+        <div class="lists-dropdown">
+          <div class="uk-margin-small">
+            <button
+              class="uk-button uk-button-default"
+              type="button"
+              uk-icon="icon: triangle-down"
+            >
+              {{ list.name }}
+            </button>
+            <div uk-dropdown="mode: click">
+              <ul class="uk-nav uk-dropdown-nav">
+                <li *ngFor="let list of lists" (click)="onChanges(list)">
+                  <a [routerLink]="['/', list.id]" routerLinkActive="active-link">{{ list.name }}</a>
+                </li>
+                <li class="uk-nav-divider"></li>
+                <li>
+                  <a href="#modal-sections" uk-toggle>
+                    Create new list
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--End of Header -->
+    <router-outlet></router-outlet>
+  </div>
+  
+  <!--Start of Create new list Modal -->
+  <div id="modal-sections" class="uk-flex-top" uk-modal>
+    <div class="uk-modal-dialog uk-margin-auto-vertical">
+      <div class="uk-modal-header">
+        <h2 class="uk-modal-title">Create new list</h2>
+      </div>
+      <div class="uk-modal-body">
+        <app-list-modal></app-list-modal>
+      </div>
+      <div class="uk-modal-footer uk-text-right">
+        <button class="uk-button uk-modal-close" type="button">
+          Cancel
+        </button>
+        <button class="uk-button done-btn" type="button" (click)="onAddList()">
+          Done
+        </button>
+      </div>
+    </div>
+  </div>
+  <!--End of Create new list Modal -->
