@@ -19,8 +19,8 @@
           appAutoFocus
           formControlName="task_title"
         />
-        <div class="task-description">{{ task.task_description }}</div>
-        <div class="uk-width-auto uk-margin-remove uk-padding-remove">
+        <div *ngIf="!inEdit" class="task-description">{{ task.task_description }}</div>
+        <div *ngIf="!inEdit" class="uk-width-auto uk-margin-remove uk-padding-remove">
           <button
             *ngIf="task.due_date"
             (click)="openModal()"

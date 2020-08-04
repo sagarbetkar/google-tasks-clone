@@ -20,7 +20,6 @@ export class UikitModal<T = any, O = any, E = any> {
   
     static show(id: string) {
       UIkit.update(document.body, "update");
-      console.log(id);
       if(UIkit.modal(id)) {
         UIkit.modal(id).show();
       }
@@ -59,7 +58,6 @@ export class UikitModal<T = any, O = any, E = any> {
     }
   
     get modal() {
-      console.log(this.elementId);
       return this.uikit.modal(`#${this.elementId}`);
     }
   

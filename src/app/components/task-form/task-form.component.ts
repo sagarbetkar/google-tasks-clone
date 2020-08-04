@@ -73,7 +73,6 @@ export class TaskFormComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   openModal() {
-    console.log(this.task);
     const dialogRef = this.dailog.open(DateModalComponent, {
       width: '268px',
       data: this.task

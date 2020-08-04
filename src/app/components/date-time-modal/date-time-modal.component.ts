@@ -26,7 +26,6 @@ export class DateTimeModalComponent implements OnInit, OnChanges, OnDestroy {
   constructor(private fb: FormBuilder) {}
   
   ngOnInit(): void {
-    console.log(JSON.stringify(this.task));
     this.updateForm();
     for (let hour = 0; hour < 24; hour++) {
       this.hours.push(moment({ hour }).format('h:mm A'));
